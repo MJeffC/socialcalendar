@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create An Event</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+            <a href="/logout">Logout</a>
+    </nav>    
+    <div>
+        <h2>Create an Event!</h2>
+        <form action="/event/create" method="post">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div>
+                <label for="name">Event Name:</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label for="location">Location(address):</label>
+                <input type="text" name="location">
+            </div>
+            <div>
+                <label for="startdate">Date of Event:</label>
+                <input type="date" name="startdate" required>
+            </div>
+            <div>
+                <label for="category">Category</label>
+                <select name="category" id="">
+                    <option value="fitness">Fitness</option>
+                    <option value="mental">Mental Health</option>
+                    <option value="fun">Fun</option>
+                    <option value="finance">Finance</option>
+                </select>
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea name="description" id="" cols="30" rows="5" class="form-control"></textarea>
+            </div>
+            <input type="submit" value="Create">
+        </form>
+    </div>
+</body>
+</html>

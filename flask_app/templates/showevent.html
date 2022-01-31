@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/create">Create an Event</a>
+        </div>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+        <div>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+    <p>Viewing: {{event.creator.username}}'s Event</p>
+    <div>
+        <h2>{{event.name}}</h2>
+        <div>
+            <p>Date: <br> {{event.date}}</p>
+            <p>Location: <br> {{event.location}}</p>
+            <p>Description: <br> {{event.description}}</p>
+        </div>
+        <div>
+            <form action="/join/rsvp" method="POST">
+                <input type="hidden" name="event_id" value="{{event.id}}">
+                <input type="submit" value="ATTEND">
+            </form>
+            <form action="/remove/rsvp" method="POST">
+                <input type="hidden" name="event_id" value="{{event.id}}">
+                <input type="submit" value="NOT ATTENDING">
+            </form>
+            <input type="submit" value="{{rsvp[0].COUNT}}">
+        </div>
+    </div>
+</body>
+</html>

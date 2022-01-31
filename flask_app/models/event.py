@@ -19,7 +19,7 @@ class Event:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.users_who_rsvpd=[]
-        self.creator={}
+        self.creator= None
 
     def time_span(self):
         now = datetime.now()
@@ -37,7 +37,7 @@ class Event:
             
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO events (name,location,description,startdate,enddate,user_id) VALUES (%(location)s,%(description)s,%(startdate)s,%(enddate)s,%(user_id)s)"
+        query = "INSERT INTO events (name,location,description,category,startdate,user_id) VALUES (%(name)s,%(location)s,%(description)s,%(category)s,%(startdate)s,%(user_id)s)"
         return connectToMySQL(cls.db).query_db(query, data)
 
 
@@ -76,6 +76,7 @@ class Event:
                 "description":one_event['description'],
                 "name":one_event['name'],
                 "startdate":one_event['startdate'],
+                "category": one_event['category'],
                 "user_id":one_event['user_id'],
                 "created_at":one_event['created_at'],
                 "updated_at":one_event['updated_at']
@@ -104,7 +105,7 @@ class Event:
         for one_user in results:
             eventdata={
                 "id":one_user['id'],
-                "name":one_user['event'],
+                "name":one_user['name'],
                 "location":one_user['location'],
                 "description":one_user['description'],
                 "startdate":one_user['startdate'],
@@ -151,4 +152,44 @@ class Event:
             event.users_who_rsvpd.append(user.User(data))
         return event
 
+    @classmethod
+    def add_rsvp(cls,data):
+        query="INSERT INTO rsvps (user_id,event_id) VALUES (%(user_id)s, %(event_id)s);"
+        return connectToMySQL(cls.db).query_db(query,data)
+    
+    @classmethod
+    def grab_rsvp(cls, data):
+        query = "SELECT COUNT(*) COUNT FROM rsvps WHERE event_id = %(id)s;"
+        return connectToMySQL(cls.db).query_db(query, data)
 
+    @classmethod
+    def get_one_with_creator(cls,data):
+        query = "SELECT * FROM events JOIN users ON events.user_id = users.id WHERE events.id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query,data)
+        event =  cls(results[0])
+        user_data = {
+                'id': results[0]['users.id'],
+                'username': results[0]['username'],
+                'email': results[0]['email'],
+                'password': results[0]['password'],
+                'created_at': results[0]['created_at'],
+                'updated_at': results[0]['updated_at']                 
+        }
+        creator = user.User(user_data)
+        event.creator = creator
+        return event
+
+
+    @staticmethod
+    def validate_event(event):
+        is_valid = True
+        if len(event['name']) < 2:
+            is_valid = False
+            flash('Event name must be entered!', "event")
+        if len(event['location']) < 5:
+            is_valid = False
+            flash('location must be entered!', "event")
+        if len(event['description']) < 10:
+            is_valid = False
+            flash('description must be entered!', "painting")
+        return is_valid
