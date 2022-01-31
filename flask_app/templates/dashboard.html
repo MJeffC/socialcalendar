@@ -15,7 +15,7 @@
         <div id="rightnav">
             <ul>
                 <li><a href="/create">Create</a></li>
-                <li><a href="/view">My Events</a></li>
+                <li><a href="/myevents">My Events</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
         </div>
@@ -27,7 +27,7 @@
         {% for event in events %}
             {% if event.creator.id == session.user_id %}
                 {%if event.startdate > now %}
-                    <h6>You created an event called <a href="/view/{{event.id}}">{{event.name}}</a> {{event.time_span()}}.</h6>
+                    <h6>You created an event called <a href="/edit/{{event.id}}">{{event.name}}</a> {{event.time_span()}}.</h6>
                 {% endif %}
             {% endif %}
         {% endfor %}

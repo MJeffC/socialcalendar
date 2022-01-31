@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Event</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/create">Create an Event</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>    
+    <div>
+        <h2>Edit Your Event</h2>
+        <form action="/event/update/{{event.id}}" method="post">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div>
+                <label for="name">Event Name:</label>
+                <input type="hidden" name="id" value="{{event.id}}">
+                <input type="text" name="name" value="{{event.name}}">
+            </div>
+            <div>
+                <label for="location">Location:</label>
+                <input type="text" name="location" value="{{event.location}}">
+            </div>
+            <div>
+                <label for="date">Date of Event:</label>
+                <input type="date" name="startdate" id="" value="{{event.startdate}}" required>
+            </div>
+            <div>
+                <label for="category">Category</label>
+                <input type="text" name="categiry" value="{{event.category}}">
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea name="description" id="" cols="20" rows="5" class="form-control">{{event.description}}</textarea>
+            </div>
+            <input type="submit" value="Update">
+        </form>
+    </div>
+</body>
+</html>

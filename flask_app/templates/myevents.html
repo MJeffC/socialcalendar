@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/create">Create an Event</a>
+        </div>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+        </div>
+        <div>
+            <a href="/logout">Logout</a>
+        </div>
+        <div id="triptext">
+            {% for event in events %}
+                {% if event.creator.id == session.user_id %}
+                    {%if event.startdate > now %}
+                        <h6>You created an event called <a href="/edit/{{event.id}}">{{event.name}}</a> {{event.time_span()}}.</h6>
+                        <div>
+                            <a href="/view/{{event.id}}">View</a>
+                            <a href="/edit/{{event.id}}">Edit</a>
+                            <a href="/destroy/event/{{event.id}}">Delete</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+</body>
+</html>

@@ -73,6 +73,12 @@ class User:
     def add_rsvp(cls,data):
         query="INSERT INTO rsvps (user_id,event_id) VALUES (%(user_id)s, %(event_id)s);"
         return connectToMySQL(cls.db).query_db(query,data)
+    
+    @classmethod
+    def deletersvp(cls,data):
+        query= "DELETE FROM rsvps WHERE event_id=%(event_id)s AND user_id=%(user_id)s;"
+        return connectToMySQL(cls.db).query_db(query,data)
+
 
     @staticmethod
     def validate_register(user):
