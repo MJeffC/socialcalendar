@@ -21,7 +21,7 @@ body {
     padding: 45px;
     width: 300px;
     height: 500px;
-    background-color:#73b66bf3;
+    background-color:#96d294;
     color: white;
 }
 
@@ -36,7 +36,7 @@ button{
     width:100px;
     height:auto;
     display:inline-block;
-    background-color: green;
+    background-color: rgb(17, 131, 17);
     color:white;
 }
 
