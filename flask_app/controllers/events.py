@@ -72,7 +72,10 @@ def show_event(id):
     data = {
         "id": id
     }
-    user = User.get_by_id(data)
+    user_data = {
+        "id": session['user_id']
+    }
+    user = User.get_by_id(user_data)
     event = Event.get_one_with_creator(data)
     rsvp = Event.grab_rsvp(data)
     # print(rsvp)
@@ -86,8 +89,9 @@ def update_event(id):
         return redirect(f'/event/edit/{id}') #cannot pass in int:id outside of app.route links
     data = {
         "name": request.form["name"],
-        "startdate": request.form['startdate'],
         "location": request.form['location'],
+        "startdate": request.form['startdate'],
+        "category": request.form['category'],
         "description": request.form["description"],
         "id": request.form["id"]
         }

@@ -39,7 +39,12 @@
             </div>
             <div>
                 <label for="category">Category</label>
-                <input type="text" name="categiry" value="{{event.category}}">
+                <select name="category" value="{{event.category}}"id="">
+                    <option value="fitness">Fitness</option>
+                    <option value="mental">Mental Health</option>
+                    <option value="fun">Fun</option>
+                    <option value="finance">Finance</option>
+                </select>
             </div>
             <div>
                 <label for="description">Description:</label>
