@@ -26,10 +26,8 @@
     <div id="populartrips">
         <div id="triptext">
         {% for event in events %}
-            {% if event.creator.id == session.user_id %}
-                {%if event.startdate > now %}
-                    <h6>You created an event called <a href="/edit/{{event.id}}">{{event.name}}</a> {{event.time_span()}}.</h6>
-                {% endif %}
+            {% if event.creator.id == session.user_id %}         
+                <h6>You created an event called <a href="/edit/{{event.id}}">{{event.name}}</a> {{event.time_span()}}.</h6>  
             {% endif %}
         {% endfor %}
         </div>
@@ -39,9 +37,7 @@
         <div id="triptext">
         {% for event in events %}
             {% if event.creator.id != session.user_id %}
-                {%if event.startdate > now %}
-                    <h6>{{event.creator.username}} created an event called <a href="/view/{{event.id}}">{{event.name}}</a> {{event.time_span()}}.</h6>
-                {% endif %}
+                <h6>{{event.creator.username}} created an event called <a href="/view/{{event.id}}">{{event.name}}</a> {{event.time_span()}}.</h6>
             {% endif %}
         {% endfor %}
         </div>
