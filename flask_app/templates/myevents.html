@@ -20,14 +20,12 @@
         <div id="triptext">
             {% for event in events %}
                 {% if event.creator.id == session.user_id %}
-                    {%if event.startdate > now %}
                         <h6>You created an event called <a href="/edit/{{event.id}}">{{event.name}}</a> {{event.time_span()}}.</h6>
                         <div>
                             <a href="/view/{{event.id}}">View</a>
                             <a href="/edit/{{event.id}}">Edit</a>
                             <a href="/destroy/event/{{event.id}}">Delete</a>
                         </div>
-                    {% endif %}
                 {% endif %}
             {% endfor %}
 </body>
