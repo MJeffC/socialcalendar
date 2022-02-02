@@ -9,18 +9,18 @@
     <title>Edit Event</title>
 </head>
 <body>
-    <nav>
-        <div id="navbar">
-            <div id="leftnav">
-                    <span>{{user.username}}</span>
-            </div>
-        <div id="rightnav">
-        <div>
-            <a class="navbar" href="/create">Create an Event</a>
-            <a class="navbar" href="/dashboard">Dashboard</a>
-            <a class="navbar" href="/logout">Logout</a>
+    <div id="navbar">
+        <div id="leftnav">
+            <span>{{user.username}}</span>
         </div>
-    </nav>    
+        <div id="rightnav">
+            <ul>
+                <li class = "nav"><a href="/dashboard">Dashboard</a></li>
+                <li class = "nav"><a href="/create">Create</a></li>
+                <li class = "nav"><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>  
     <div>
         <h2>Edit Your Event</h2>
         <div id="edit-box">
@@ -33,21 +33,21 @@
                 {% endif %}
             {% endwith %}
             <div>
-                <label for="name">Event Name:</label>
+                <label class="form-label" for="name">Event Name:</label>
                 <input type="hidden" name="id" value="{{event.id}}">
-                <input type="text" name="name" value="{{event.name}}">
+                <input class="form-control" type="text" name="name" value="{{event.name}}">
             </div>
             <div>
-                <label for="location">Location:</label>
-                <input type="text" name="location" value="{{event.location}}">
+                <label class="form-label" for="location">Location:</label>
+                <input class="form-control" type="text" name="location" value="{{event.location}}">
             </div>
             <div>
-                <label for="date">Date of Event:</label>
-                <input type="date" name="startdate" id="" value="{{event.startdate}}" required>
+                <label class="form-label" for="date">Date of Event:</label>
+                <input class="form-control" type="date" name="startdate" id="" value="{{event.startdate}}" required>
             </div>
             <div>
-                <label for="category">Category</label>
-                <select name="category" value="{{event.category}}"id="">
+                <label class="form-label" for="category">Category</label>
+                <select class="form-control" name="category" value="{{event.category}}"id="">
                     <option value="fitness">Fitness</option>
                     <option value="mental">Mental Health</option>
                     <option value="fun">Fun</option>
@@ -55,7 +55,7 @@
                 </select>
             </div>
             <div>
-                <label for="description">Description:</label>
+                <label class="form-label" for="description">Description:</label>
                 <textarea name="description" id="" cols="20" rows="5" class="form-control">{{event.description}}</textarea>
             </div>
             <button type="submit" value="Update">Update</button>

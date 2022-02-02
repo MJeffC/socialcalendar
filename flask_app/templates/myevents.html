@@ -9,22 +9,18 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
-        <div id="navbar">
-            <div id="leftnav">
-                <span>{{user.username}}</span>
-            </div>
+    <div id="navbar">
+        <div id="leftnav">
+            <span>{{user.username}}</span>
+        </div>
         <div id="rightnav">
-        <div class = "navbar">
-            <a href="/create">Create an Event</a>
+            <ul>
+                <li class = "nav"><a href="/dashboard">Dashboard</a></li>
+                <li class = "nav"><a href="/myevents">My Events</a></li>
+                <li class = "nav"><a href="/logout">Logout</a></li>
+            </ul>
         </div>
-        <div class = "navbar">
-            <a href="/dashboard">Dashboard</a>
-        </div>
-        <div class = "navbar">
-            <a href="/logout">Logout</a>
-        </div>
-    </nav>
+    </div>  
         <div id="triptext">
             {% for event in events %}
                 {% if event.creator.id == session.user_id %}

@@ -23,6 +23,7 @@ body {
     height: 500px;
     background-color:#96d294;
     color: white;
+    border-radius:8px;
 }
 
 .column{
@@ -38,6 +39,7 @@ button{
     display:inline-block;
     background-color: rgb(17, 131, 17);
     color:white;
+    border-radius:15px;
 }
 
 h1{

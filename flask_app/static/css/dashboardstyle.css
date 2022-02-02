@@ -1,5 +1,5 @@
 body{
-    width: 1500px;
+    margin:0px auto;
 }
 #navbar {
     display: flex;
@@ -29,10 +29,36 @@ span {
     padding-left: 50px ;
 }
 
-h3, h6 {
+h3 {
     padding-left: 600px;
 }
 
 #populartrips {
+    display:flex;
     background-color: #96d294;
+    border:black 2px solid;
+    align-items:center;
+    margin-left:475px;
+    margin-right:300px;
+    padding:20px;
+    
+}
+
+h1{
+    margin:15px;
+}
+
+#triptext{
+    margin-right:70px;
+
+}
+
+h6{
+    display:flex-box;
+    justify-content:center;
+    margin-left:115px;
+    border:red solid 2px;
+    padding:0px 20px 0px 20px;
+    margin:10px;
+
 }

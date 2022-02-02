@@ -8,24 +8,19 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/showstyle.css') }}">
 </head>
 <body>
-    <nav>
-        <div id="navbar">
-            <div id="leftnav">
-                <span>{{user.username}}</span>
-            </div>
+    <div id="navbar">
+        <div id="leftnav">
+            <span>{{user.username}}</span>
+        </div>
         <div id="rightnav">
-        <div>
-        <div class = "navbar">
-            <a href="/create">Create an Event</a>
+            <ul>
+                <li class = "nav"><a href="/dashboard">Dashboard</a></li>
+                <li class = "nav"><a href="/create">Create</a></li>
+                <li class = "nav"><a href="/logout">Logout</a></li>
+            </ul>
         </div>
-        <div class = "navbar">
-            <a href="/dashboard">Dashboard</a>
-        </div>
-        <div class = "navbar">
-            <a href="/logout">Logout</a>
-        </div>
-    </nav>
-    <p>Viewing: {{event.creator.username}}'s Event</p>
+    </div>  
+    <h1>Viewing: {{event.creator.username}}'s Event</h1>
     <div id="triptext">
         <h2>{{event.name}}</h2>
         <div>
@@ -33,7 +28,7 @@
             <p>Location: <br> {{event.location}}</p>
             <p>Description: <br> {{event.description}}</p>
         </div>
-        <div>
+        <div id="rsvp">
             <form action="/join/rsvp" method="POST">
                 <input type="hidden" name="event_id" value="{{event.id}}">
                 <input type="submit" value="ATTEND">
