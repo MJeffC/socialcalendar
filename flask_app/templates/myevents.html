@@ -10,6 +10,11 @@
 </head>
 <body>
     <nav>
+        <div id="navbar">
+            <div id="leftnav">
+                <span>{{user.username}}</span>
+            </div>
+        <div id="rightnav">
         <div class = "navbar">
             <a href="/create">Create an Event</a>
         </div>
@@ -19,6 +24,7 @@
         <div class = "navbar">
             <a href="/logout">Logout</a>
         </div>
+    </nav>
         <div id="triptext">
             {% for event in events %}
                 {% if event.creator.id == session.user_id %}
