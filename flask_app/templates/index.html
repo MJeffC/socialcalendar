@@ -9,9 +9,12 @@
     <title>Logintest</title>
 </head>
 <body>
-    <div id="forms">
-            <form action="/login" method="post" class="col-5 p-4">
-                <h3 class="textform">Already been here? Login</h3>
+    <div id="container">
+    <h1>My Social Calendar</h1>
+    <div class="row">
+    <div>
+            <form action="/login" method="post">
+                <h3 class="textform">Login</h3>
                 {% with messages=get_flashed_messages(category_filter=['login']) %}
                     {% if messages %}
                     <div class="alert alert-danger" role="alert">
@@ -22,19 +25,24 @@
                     </div>
                     {% endif %} 
                 {% endwith %} 
-                <div class="form-group">
+                <div class="column">
                     <label for="email">Email:</label>
-                    <input type="text" name="email" class="form-control">
+                    <input type="text" name="email" placeholder="Email">
                 </div>
-                <div class="form-group">
+                <div class="column">
                     <label for="password">Password:</label>
-                    <input type="password" name="password" class="form-control">
+                    <input type="password" name="password" placeholder="Password">
                 </div>
-                <input type="submit" value="Login" class="submitbutton">
+                <div class="column">
+                    <button type="submit" value="Log In">Login Here</button>
+                </div>
             </form>
-            <form action="/register" method="post" class="col-4 p-4">
-                <h3 class="textform">Register</h3>
-                <h5 class="subtextform">Let's get you registered</h5>
+</div>
+</div>
+            <div class="row">
+            <form action="/register" method="post">
+                <div class="column">
+                <h3>Register</h3>
                 {% with messages=get_flashed_messages(category_filter=['register']) %} 
                     {% if messages %} 
                     <div class="alert alert-danger" role="alert">
@@ -45,29 +53,31 @@
                     </div>
                     {% endif %}
                 {% endwith %}
-                <div class="row">
-                    <div class="col-6">
-                        <input type="text" class="form-control" name="username" placeholder="Username">
-                    </div>
+            </div>
+                <div class="column">
+                        <label for="username">First Name</label>
+                        <input type="text" name="username" placeholder="Username">
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <input type="text" class="form-control" name="email" placeholder="Email">
-                    </div>
+                <div class="column">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" placeholder="Email">
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
-                    </div>
+                <div class="column">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="Password">
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
-                    </div>
+                <div class="column">
+                        <label for="conf_password">Confirm Password</label>
+                        <input type="password" name="password_confirmation" placeholder="Confirm Password">
                 </div>
-                <input type="submit" value="Register" class="submitbutton">
-            </form>       
+                <div class="column">
+                    <button type="submit" value="Register">Register</button>
+                </div>
+            </div>
+            </form>    
+        </div>   
         </div>                          
+    </div>
 
 
 

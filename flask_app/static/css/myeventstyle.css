@@ -1,0 +1,26 @@
+body{
+    width: 1500px;
+}
+nav {
+    display: flex;
+    width: 1500px;
+    height:100px;
+    align-items: center;
+    background-color: #96d294;
+}
+
+.navbar { 
+    display: inline;
+    padding: 20px;
+    color: white;
+    align-items: center;
+    justify-content: flex-end;  
+    width: 150px;
+    align-items: center;
+}
+
+#triptext{
+    margin-top: 50px;
+    background-color: #96d294;
+    
+}

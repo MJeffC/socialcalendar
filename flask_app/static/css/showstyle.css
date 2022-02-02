@@ -1,0 +1,38 @@
+body{
+    width: 1500px;
+}
+nav {
+    display: flex;
+    width: 1500px;
+    height:100px;
+    align-items: center;
+    background-color: #96d294;
+    color:white;
+}
+
+.navbar { 
+    display: inline;
+    padding: 20px;
+    color: white;
+    align-items: center;
+    justify-content: flex-end;  
+    width: 150px;
+    align-items: center;
+}
+
+#triptext{
+    background-color: #96d294;
+    width: 500px;
+    margin-left: 20px;
+    
+}
+
+button {
+    background-color: green;
+    color: white;
+}
+
+input{
+    background-color: green;
+    color: white;
+}

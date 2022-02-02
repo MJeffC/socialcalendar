@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myeventstyle.css') }}">
     <title>Document</title>
 </head>
 <body>
@@ -13,27 +15,25 @@
                 <span>{{user.username}}</span>
             </div>
         <div id="rightnav">
-        <div>
+        <div class = "navbar">
             <a href="/create">Create an Event</a>
         </div>
-        <div>
+        <div class = "navbar">
             <a href="/dashboard">Dashboard</a>
         </div>
-        <div>
+        <div class = "navbar">
             <a href="/logout">Logout</a>
         </div>
     </nav>
         <div id="triptext">
             {% for event in events %}
                 {% if event.creator.id == session.user_id %}
-                    {%if event.startdate > now %}
                         <h6>You created an event called <a href="/edit/{{event.id}}">{{event.name}}</a> {{event.time_span()}}.</h6>
                         <div>
                             <a href="/view/{{event.id}}">View</a>
                             <a href="/edit/{{event.id}}">Edit</a>
                             <a href="/destroy/event/{{event.id}}">Delete</a>
                         </div>
-                    {% endif %}
                 {% endif %}
             {% endfor %}
 </body>

@@ -186,10 +186,10 @@ class Event:
         if len(event['name']) < 2:
             is_valid = False
             flash('Event name must be entered!', "event")
-        if len(event['location']) < 5:
+        if len(event['location']) < 3:
             is_valid = False
             flash('location must be entered!', "event")
-        if len(event['description']) < 10:
+        if len(event['description']) < 1:
             is_valid = False
-            flash('description must be entered!', "painting")
+            flash('description must be entered!', "event")
         return is_valid
